@@ -1,17 +1,19 @@
-# React + Vite
+# Innovatech Chile - Frontend 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositorio contiene la aplicación Frontend de Innovatech Chile, desarrollada con **React (Vite)** y empaquetada utilizando buenas prácticas de contenedorización para su despliegue en AWS.
 
-Currently, two official plugins are available:
+## 🏗️ Arquitectura y Contenedorización
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+El proyecto utiliza un **Dockerfile Multi-stage**:
+1. **Build Stage:** Utiliza `node:20-alpine` para descargar dependencias y compilar los archivos estáticos.
+2. **Production Stage:** Utiliza `nginxinc/nginx-unprivileged:alpine`. Esto garantiza que el servidor web se ejecute con un **usuario no root**, cumpliendo con el principio de mínimo privilegio y asegurando la máquina host.
 
-## React Compiler
+## 🚀 Cómo ejecutar localmente
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+El ecosistema completo (Frontend, Backend y Base de Datos) está orquestado mediante Docker Compose.
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-test
+1. Clonar este repositorio y el repositorio del backend en la misma carpeta base.
+2. Navegar al directorio del backend donde se encuentra el archivo orquestador.
+3. Ejecutar el stack:
+   ```bash
+   docker-compose up --build -d
