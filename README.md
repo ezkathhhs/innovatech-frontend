@@ -22,3 +22,4 @@ El despliegue está automatizado con GitHub Actions. Al realizar un push a la ra
 1. Construye la imagen Docker.
 2. Sube la imagen a Docker Hub.
 3. Se conecta por SSH a la instancia EC2 Pública en AWS y actualiza el contenedor de Nginx.
+test
