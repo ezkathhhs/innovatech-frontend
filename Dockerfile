@@ -22,6 +22,9 @@ FROM nginxinc/nginx-unprivileged:alpine
 # Copiamos los estáticos compilados desde la Etapa 1
 COPY --from=builder /app/dist /usr/share/nginx/html
 
+# Copiamos nuestra configuración personalizada de Nginx
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 # Al ser no root, Nginx unprivileged usa el puerto 8080 por defecto, no el 80
 EXPOSE 8080
 
